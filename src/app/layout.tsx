@@ -4,6 +4,7 @@ import { homePath, ticketsPath } from '@/paths';
 import Link from 'next/link';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { LucideKanban } from 'lucide-react';
+import { Header } from '@/components/header';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,32 +19,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <nav
-          className='
-            supports-backdropblur:bg-background/60
-            fixed left-0 right-0 top-0 z-20
-            border-b bg-background/95 backdrop-blur
-            w-full flex py-2.5 px-5 justify-between
-            '
-        >
-          <div>
-            <Link
-              href={homePath()}
-              className={buttonVariants({ variant: 'ghost' })}
-            >
-              <LucideKanban />
-              <h1 className='text-lg font-semibold'>Ticket Bounty</h1>
-            </Link>
-          </div>
-          <div>
-            <Link
-              href={ticketsPath()}
-              className={buttonVariants({ variant: 'default' })}
-            >
-              Tickets
-            </Link>
-          </div>
-        </nav>
+        <Header />
         <main
           className='
             min-h-screen flex-1
@@ -51,7 +27,7 @@ export default function RootLayout({
             py-24 px-8
             bg-secondary/20
             flex flex-col
-            '
+          '
         >
           {children}
         </main>
