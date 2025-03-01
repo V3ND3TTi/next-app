@@ -1,18 +1,9 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { homePath, ticketsPath } from '@/paths';
 import Link from 'next/link';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+import { Button, buttonVariants } from '@/components/ui/button';
+import { LucideKanban } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -26,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
         <nav
           className='
             supports-backdropblur:bg-background/60
@@ -38,12 +27,19 @@ export default function RootLayout({
             '
         >
           <div>
-            <Link href={homePath()} className='text-lg font-bold'>
-              Home
+            <Link
+              href={homePath()}
+              className={buttonVariants({ variant: 'ghost' })}
+            >
+              <LucideKanban />
+              <h1 className='text-lg font-semibold'>Ticket Bounty</h1>
             </Link>
           </div>
           <div>
-            <Link href={ticketsPath()} className='text-sm underline'>
+            <Link
+              href={ticketsPath()}
+              className={buttonVariants({ variant: 'default' })}
+            >
               Tickets
             </Link>
           </div>
